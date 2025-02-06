@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Keranjang Belanja - Pempek Cek Ria</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <!-- Custom Style -->
+    <link rel="stylesheet" href="css/style.css" />
+    <style>
+      /* Custom styles for the shopping cart */
+      body {
+        font-family: "Poppins", sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f9f9f9;
+      }
+
+      .navbar {
+        background-color: #333;
+        color: white;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar a {
+        color: white;
+        text-decoration: none;
+        margin: 0 15px;
+      }
+
+      .menu-card {
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 15px;
+        margin: 10px;
+        text-align: center;
+        transition: box-shadow 0.3s;
+        background-color: white;
+      }
+
+      .menu-card:hover {
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .quantity-controls {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .quantity-controls button {
+        background-color: #eebf06;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 10px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 0 5px;
+      }
+
+      .quantity-controls button:hover {
+        background-color: #eebf06;
+      }
+
+      .cart-content {
+        background-color: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        margin: 20px;
+      }
+
+      .cart-form {
+        margin-top: 20px;
+      }
+
+      .cart-form input {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+      }
+
+      .btn {
+        background-color: #eebf06;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        padding: 10px;
+        cursor: pointer;
+        font-size: 16px;
+        width: 100%;
+      }
+
+      .btn:hover {
+        background-color: #cfa600;
+      }
+
+      .shopping-cart {
+        padding: 50px 20px;
+        text-align: center;
+      }
+
+      footer {
+        text-align: center;
+        padding: 20px;
+        background-color: #333;
+        color: white;
+        position: relative;
+        bottom: 0;
+        width: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- Navbar Start -->
+    <nav class="navbar">
+      <a href="#" class="navbar-logo">cek<span>ria</span>.</a>
+      <div class="navbar-nav">
+        <a href="index.html">Home</a>
+        <a href="index.html#about">Tentang Kami</a>
+        <a href="index.html#menu_2">Menu</a>
+        <a href="index.html#contact">Kontak</a>
+      </div>
+
+      <div class="navbar-extra">
+        <a href="#" id="search-button"><i data-feather="search"></i></a>
+        <a href="shopping-cart.html" id="shopping-cart"
+          ><i data-feather="shopping-cart"></i
+        ></a>
+        <a href="#" id="menu"><i data-feather="menu"></i></a>
+      </div>
+
+      <!-- Search Form Start -->
+      <div class="search-form">
+        <input type="search" id="search-box" placeholder="search here..." />
+        <label for="search-box"><i data-feather="search"></i></label>
+      </div>
+      <!-- Search Form End -->
+    </nav>
+    <!-- Navbar End -->
+
+    <!-- Menu Section Start -->
+    <section id="menu_2" class="menu">
+      <h2><span>Menu</span> Cek Ria</h2>
+      <p>Menu Yang Cek Ria Sajikan</p>
+
+      <div class="row">
+        <div class="menu-card" data-price="4000">
+          <img
+            src="img/menu/pempek-telur.jpg"
+            alt="Telur"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">- Telur -</h3>
+          <p>IDR 4k/item</p>
+          <div class="quantity-controls">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+        <div class="menu-card" data-price="4000">
+          <img
+            src="img/menu/pempek-adaan.jpg"
+            alt="Adaan"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">- Adaan -</h3>
+          <p>IDR 4k/item</p>
+          <div class="quantity-controls">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+        <div class="menu-card" data-price="4000">
+          <img
+            src="img/menu/pempek-kulit.jpg"
+            alt="Kulit"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">- Kulit -</h3>
+          <p>IDR 4k/item</p>
+          <div class="quantity-controls">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+        <div class="menu-card" data-price="15000">
+          <img
+            src="img/menu/rujak-mie.jpg"
+            alt="Rujak-Mie"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">- Rujak Mie -</h3>
+          <p>IDR 15k</p>
+          <div class="quantity-controls">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+        <div class="menu-card" data-price="18000">
+          <img
+            src="img/menu/pempek-kapal-selam.jpg"
+            alt="Kapal-Selam"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">- Kapal Selam -</h3>
+          <p>IDR 18k</p>
+          <div class="quantity-controls">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+        <div class="menu-card" data-price="4000">
+          <img
+            src="img/menu/pempek-lenjer.jpg"
+            alt="Lenjer"
+            class="menu-card-img"
+          />
+          <h3 class="menu-card-title">- Lenjer -</h3>
+          <p>IDR 4k/item</p>
+          <div class="quantity-controls">
+            <button class="decrease">-</button>
+            <span class="quantity">0</span>
+            <button class="increase">+</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Menu Section End -->
+
+    <!-- Shopping Cart Section Start -->
+    <section id="shopping-cart-section" class="shopping-cart">
+      <h2><span>Keranjang</span> Belanja</h2>
+      <div class="cart-content">
+        <div class="cart-items">
+          <h3>Menu Terpilih</h3>
+          <ul id="cart-list"></ul>
+          <div id="total-price" style="font-weight: bold; margin-top: 20px">
+            Total: IDR 0
+          </div>
+          <!-- Menampilkan total harga -->
+        </div>
+        <div class="cart-form">
+          <h3>Biodata</h3>
+          <form id="order-form">
+            <div class="input-group">
+              <input type="text" id="name" placeholder="Nama" required />
+            </div>
+            <div class="input-group">
+              <input type="email" id="email" placeholder="Email" required />
+            </div>
+            <div class="input-group">
+              <input type="text" id="phone" placeholder="No HP" required />
+            </div>
+            <div class="input-group">
+              <input type="text" id="address" placeholder="Alamat" required />
+            </div>
+            <button type="submit" class="btn">Kirim Pesan</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <!-- Shopping Cart Section End -->
+
+    <!-- Footer Start -->
+    <footer>
+      <div class="links">
+        <a href="shopping-cart.html">Keranjang</a>
+        <a href="index.html">Home</a>
+        <a href="index.html#about">Tentang Kami</a>
+        <a href="index.html#menu_2">Menu</a>
+        <a href="index.html#contact">Kontak</a>
+      </div>
+      <div class="credit">
+        <p>Created by <a href="">Aldiyansyah</a>. | &copy; 2025.</p>
+      </div>
+    </footer>
+    <!-- Footer End -->
+
+    <!-- Feather Icons Script -->
+    <script>
+      feather.replace();
+    </script>
+
+    <!-- My Javascript -->
+    <script>
+      const menuItems = document.querySelectorAll(".menu-card");
+      const cartList = document.getElementById("cart-list");
+      const orderForm = document.getElementById("order-form");
+      const totalDisplay = document.getElementById("total-price");
+      const whatsappNumber = "6289638964053"; // Ganti dengan nomor WhatsApp yang sebenarnya (tanpa tanda +)
+      let totalPrice = 0; // Variabel untuk menyimpan total harga
+      const cartItems = {}; // Objek untuk menyimpan item keranjang
+
+      // Menambahkan event listener untuk setiap item menu
+      menuItems.forEach((item) => {
+        const increaseButton = item.querySelector(".increase");
+        const decreaseButton = item.querySelector(".decrease");
+        const quantityDisplay = item.querySelector(".quantity");
+        const itemName = item.querySelector(".menu-card-title").textContent;
+        const itemPrice = parseInt(item.getAttribute("data-price")); // Mengambil harga dari atribut data-price
+
+        // Event listener untuk tombol tambah
+        increaseButton.addEventListener("click", function () {
+          if (!cartItems[itemName]) {
+            cartItems[itemName] = { price: itemPrice, quantity: 0 };
+          }
+          cartItems[itemName].quantity++;
+          quantityDisplay.textContent = cartItems[itemName].quantity;
+          updateCart();
+        });
+
+        // Event listener untuk tombol kurang
+        decreaseButton.addEventListener("click", function () {
+          if (cartItems[itemName] && cartItems[itemName].quantity > 0) {
+            cartItems[itemName].quantity--;
+            quantityDisplay.textContent = cartItems[itemName].quantity;
+            if (cartItems[itemName].quantity === 0) {
+              delete cartItems[itemName]; // Hapus item dari keranjang jika jumlahnya 0
+            }
+            updateCart();
+          }
+        });
+      });
+
+      // Fungsi untuk memperbarui keranjang dan total harga
+      function updateCart() {
+        cartList.innerHTML = ""; // Kosongkan daftar keranjang
+        totalPrice = 0; // Reset total harga
+
+        for (const item in cartItems) {
+          if (cartItems[item].quantity > 0) {
+            const listItem = document.createElement("li");
+            const itemTotalPrice =
+              cartItems[item].price * cartItems[item].quantity;
+            listItem.textContent = `${item} - IDR ${itemTotalPrice} (${cartItems[item].quantity})`;
+            cartList.appendChild(listItem);
+            totalPrice += itemTotalPrice; // Tambahkan harga item ke total
+          }
+        }
+
+        totalDisplay.textContent = `Total: IDR ${totalPrice}`; // Menampilkan total
+      }
+
+      orderForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        const name = document.getElementById("name").value;
+        const email = document.getElementById("email").value;
+        const phone = document.getElementById("phone").value;
+        const address = document.getElementById("address").value;
+        const items = Object.keys(cartItems)
+          .map(
+            (item) =>
+              `${item} - IDR ${cartItems[item].price} x ${cartItems[item].quantity}`
+          )
+          .join("\n");
+
+        const message = `Nama: ${name}\nEmail: ${email}\nNo HP: ${phone}\nAlamat: ${address}\n\nMenu Terpilih:\n${items}\n\nTotal: IDR ${totalPrice}`;
+
+        // Debugging: Log the constructed URL to the console
+        const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+          message
+        )}`;
+        console.log(whatsappUrl);
+
+        // Open the WhatsApp URL in a new tab
+        window.open(whatsappUrl, "_blank");
+      });
+    </script>
+  </body>
+</html>
